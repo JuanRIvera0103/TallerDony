@@ -1,0 +1,1 @@
+Codigo: 1 Nombre: pollo Precio: 1000 Cantidad: 10

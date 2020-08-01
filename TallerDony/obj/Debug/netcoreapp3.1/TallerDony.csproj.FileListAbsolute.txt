@@ -1,0 +1,13 @@
+C:\Users\higui\source\repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.exe
+C:\Users\higui\source\repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.deps.json
+C:\Users\higui\source\repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.runtimeconfig.json
+C:\Users\higui\source\repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.runtimeconfig.dev.json
+C:\Users\higui\source\repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.dll
+C:\Users\higui\source\repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.pdb
+C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.csprojAssemblyReference.cache
+C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.AssemblyInfoInputs.cache
+C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.AssemblyInfo.cs
+C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.csproj.CoreCompileInputs.cache
+C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.dll
+C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.pdb
+C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.genruntimeconfig.cache
