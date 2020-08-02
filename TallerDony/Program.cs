@@ -18,27 +18,33 @@ namespace TallerDony
                 Console.WriteLine("------------------------ Menu de TC# ------------------------");
                 Console.WriteLine("1.Menu Clientes");
                 Console.WriteLine("2.Menu Productos");
-                Console.WriteLine("3.Menu Informes");
-                Console.WriteLine("4.Salir");
+                Console.WriteLine("3.Menu Ventas");
+                Console.WriteLine("4.Menu Informes");
+                Console.WriteLine("5.Generar 10 clientes y 10 productos");
+                Console.WriteLine("6.Salir");
                 Console.WriteLine("-------------------------------------------------------------");
                 Console.WriteLine("Ingrese le numero según la opción que desea solicitar: ");
                 opcion = int.Parse(Console.ReadLine());
-                
+                Console.Clear();
                 switch (opcion)
                 {
                     case 1:
                         ServicioCliente serviciocliente = new ServicioCliente();
-                        serviciocliente.MenuCliente();
+                        serviciocliente.MenuCliente();                       
                         ;break;
                     case 2:
                         ServicioProducto servicioproducto = new ServicioProducto();
                         servicioproducto.menuProductos();
                         ; break;
-                    case 3:
+                    case 3:                                                
+                        ServicioVenta servicioventa = new ServicioVenta();                            
+                        servicioventa.menuVenta();
+                        ; break;
+                    case 4:
                         ServicioReporte servicioreporte = new ServicioReporte();
                         servicioreporte.menuReportes();
                         ; break;
-                    case 4:
+                    case 6:
                         salir = true;
                         ;break;
                 }

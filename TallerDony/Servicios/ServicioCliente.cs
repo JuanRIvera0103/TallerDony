@@ -9,7 +9,7 @@ namespace TallerDony.Servicios
 {
     class ServicioCliente
     {
-        List<Cliente> ListaCliente = new List<Cliente>();
+        static List<Cliente> ListaCliente = new List<Cliente>();
         
         public void AgregarCliente(Cliente cliente)
         { 
@@ -21,14 +21,20 @@ namespace TallerDony.Servicios
             sw.WriteLine(infoanterior+"Cedula " +cliente.IdCliente+" Nombre "+cliente.NombreCliente+" Telefono "+cliente.telefonoCliente+" Direccion "+cliente.direccionCliente);            
             sw.Close();
         }
-        public void MostrarCliente(int id)
+        public int MostrarCliente(int id)
         {
             BuscarCliente(id);
-            
+
+            int respuesta = 0;
             foreach(Cliente cliente in ListaCliente )
             {
-                if (cliente.IdCliente == id) Console.WriteLine("ID: "+cliente.IdCliente+" El nombre es: "+cliente.NombreCliente+" La dirección es: "+cliente.direccionCliente+" El telefono: "+cliente.telefonoCliente);
+                if (cliente.IdCliente == id)
+                {
+                    Console.WriteLine("ID: " + cliente.IdCliente + " El nombre es: " + cliente.NombreCliente + " La dirección es: " + cliente.direccionCliente + " El telefono: " + cliente.telefonoCliente);
+                    respuesta = 1;
+                }
             }
+            return respuesta;
         }
         
         public int BuscarCliente(int id)
@@ -117,8 +123,9 @@ namespace TallerDony.Servicios
                         ; break;
                     default: Console.WriteLine("Opción ingresada no es valida");
                         ;break;
-                }
+                }                
             } while (Salir != true);
+            Console.Clear();
 
         }
 

@@ -8,13 +8,12 @@ using TallerDony.Servicios;
 namespace TallerDony.Servicios
 {
     class ServicioProducto
-    {
-        bool salir = false;
-        int opcion, cantidad, codigo;
+    {        
+        int opcion, cantidad, codigo, precio;
         string nombre;
-        double precio;
         public void menuProductos()
-        {            
+        {
+            bool salir = false;
             do
             {
                 Console.WriteLine("------------------------ Menu Productos ------------------------");
@@ -43,7 +42,7 @@ namespace TallerDony.Servicios
                         Console.WriteLine("Dijite el nombre: ");
                         nombre = Console.ReadLine();
                         Console.WriteLine("Dijite el precio: ");
-                        precio = double.Parse(Console.ReadLine());
+                        precio = int.Parse(Console.ReadLine());
                         Console.WriteLine("Dijite la cantidad: ");
                         cantidad = int.Parse(Console.ReadLine());
 
@@ -72,11 +71,12 @@ namespace TallerDony.Servicios
                         ; break;
                     default: Console.WriteLine("Opción ingresada no es valida");
                         ;break;
-                }
+                }                
             } while (salir != true);
+            Console.Clear();
         }
 
-        private List<Producto> listaProductos = new List<Producto>();
+        static List<Producto> listaProductos = new List<Producto>();
 
         private void agregarProducto(Producto producto)
         {
@@ -87,11 +87,12 @@ namespace TallerDony.Servicios
             var infoanterior = srp.ReadLine();
             srp.Close();
             StreamWriter swp = new StreamWriter(@"productos.txt");
-            swp.WriteLine("Codigo: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
+
+            swp.WriteLine(infoanterior + " Codigo: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
             swp.Close();
         }
 
-        private int buscarProducto(int codigo)
+        public int buscarProducto(int codigo)
         {
             int respuesta = -1;
             foreach (Producto producto in listaProductos)
@@ -101,9 +102,11 @@ namespace TallerDony.Servicios
                     Console.WriteLine("Codigo: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
                     respuesta = listaProductos.IndexOf(producto);
                 }
+                else Console.WriteLine("No se encontró el producto");                
             }
             return respuesta;
         }
+
 
         private void modificarProducto(int codigo)
         {
@@ -133,7 +136,7 @@ namespace TallerDony.Servicios
                     Console.WriteLine("Dijite el nombre: ");
                     nombre = Console.ReadLine();
                     Console.WriteLine("Dijite el precio: ");
-                    precio = double.Parse(Console.ReadLine());
+                    precio = int.Parse(Console.ReadLine());
                     Console.WriteLine("Dijite la cantidad: ");
                     cantidad = int.Parse(Console.ReadLine());
 
@@ -142,7 +145,6 @@ namespace TallerDony.Servicios
                     listaProductos.Insert(posicion, producto);
                 }
             }
-            else Console.WriteLine("No se encontró el producto");
         }
 
         private void eliminarProducto(int codigo)
@@ -156,10 +158,49 @@ namespace TallerDony.Servicios
                 respuesta = int.Parse(Console.ReadLine());
 
                 if (respuesta == 1) listaProductos.RemoveAt(posicion); ;
-            }
-            else Console.WriteLine("No se encontró el producto");                        
-            
+            }                        
         }
+
+        public int cantidadProducto(int codigo)
+        {
+            int cantidad = 0;
+            foreach (Producto producto in listaProductos)
+            {
+                if (producto.codigo == codigo) cantidad = producto.cantidad;
+            }
+            return cantidad;
+        }
+
+        public int precioProducto(int codigo)
+        {
+            int precio = 0;
+            foreach (Producto producto in listaProductos)
+            {
+                if (producto.codigo == codigo) precio = producto.precio;
+            }
+            return precio;
+        }
+
+        public void reducirCantidad(int posicion, int codigo, int cantidadvendida)
+        {            
+
+            foreach (Producto productos in listaProductos)
+            {
+                if(productos.codigo == codigo)
+                {
+                    codigo = productos.codigo;
+                    nombre = productos.nombre;
+                    precio = productos.precio;
+                    cantidad = productos.cantidad - cantidadvendida;
+                }                
+            }
+            
+            listaProductos.RemoveAt(posicion);
+
+            Producto producto = new Producto(codigo, nombre, precio, cantidad);
+
+             listaProductos.Insert(posicion, producto);
+         }                 
 
         private bool verificarCodigo(int codigo)
         {

@@ -1,0 +1,1 @@
+Codigo:1 idcliente:1 fecha:2/08/2020 Cantidad productos:1 Total:1000 Estado:1

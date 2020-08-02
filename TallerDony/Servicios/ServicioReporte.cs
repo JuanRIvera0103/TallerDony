@@ -13,7 +13,7 @@ namespace TallerDony.Servicios
             int opcion;
             do
             {
-                Console.WriteLine("------------------------ Menu Productos ------------------------");
+                Console.WriteLine("------------------------ Menu Informes ------------------------");
                 Console.WriteLine("1.Reporte de Clientes");
                 Console.WriteLine("2.Reporte de Productos");
                 Console.WriteLine("3.Reporte de Facturas");           
@@ -30,7 +30,8 @@ namespace TallerDony.Servicios
                     case 2:
                         reporteProductos();
                         ; break;
-                    case 3:                        
+                    case 3:
+                        reporteFacturas();
                         ; break;
                     case 4:
                         salir = true;
@@ -40,9 +41,10 @@ namespace TallerDony.Servicios
                         ; break;
                 }
             } while (salir != true);
+            Console.Clear();
         }
 
-        public void reporteCliente()
+        private void reporteCliente()
         {
             StreamReader srt = new StreamReader(@"cliente.txt");
             var infoanterior = srt.ReadLine();
@@ -50,9 +52,16 @@ namespace TallerDony.Servicios
             Console.WriteLine(infoanterior);
         }
 
-        public void reporteProductos()
+        private void reporteProductos()
         {
             StreamReader srp = new StreamReader(@"productos.txt");
+            var infoanterior = srp.ReadLine();
+            srp.Close();
+            Console.WriteLine(infoanterior);
+        }
+        private void reporteFacturas()
+        {
+            StreamReader srp = new StreamReader(@"facturas.txt");
             var infoanterior = srp.ReadLine();
             srp.Close();
             Console.WriteLine(infoanterior);
