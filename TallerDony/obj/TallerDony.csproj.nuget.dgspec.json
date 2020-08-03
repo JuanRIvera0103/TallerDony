@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RYZEN 3\\Source\\Repos\\TallerDony\\TallerDony\\TallerDony.csproj": {}
+    "C:\\Users\\RYZEN 3\\source\\repos\\TallerDony\\TallerDony\\TallerDony.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RYZEN 3\\Source\\Repos\\TallerDony\\TallerDony\\TallerDony.csproj": {
+    "C:\\Users\\RYZEN 3\\source\\repos\\TallerDony\\TallerDony\\TallerDony.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RYZEN 3\\Source\\Repos\\TallerDony\\TallerDony\\TallerDony.csproj",
+        "projectUniqueName": "C:\\Users\\RYZEN 3\\source\\repos\\TallerDony\\TallerDony\\TallerDony.csproj",
         "projectName": "TallerDony",
-        "projectPath": "C:\\Users\\RYZEN 3\\Source\\Repos\\TallerDony\\TallerDony\\TallerDony.csproj",
+        "projectPath": "C:\\Users\\RYZEN 3\\source\\repos\\TallerDony\\TallerDony\\TallerDony.csproj",
         "packagesPath": "C:\\Users\\RYZEN 3\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RYZEN 3\\Source\\Repos\\TallerDony\\TallerDony\\obj\\",
+        "outputPath": "C:\\Users\\RYZEN 3\\source\\repos\\TallerDony\\TallerDony\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\RYZEN 3\\AppData\\Roaming\\NuGet\\NuGet.Config",
