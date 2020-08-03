@@ -38,7 +38,7 @@ namespace TallerDony.Servicios
 
                         ServicioCliente serviciocliente = new ServicioCliente();
 
-                        if (serviciocliente.BuscarCliente(idcliente).Equals(1)) realizarVenta(idcliente);
+                        if (serviciocliente.BuscarCliente(idcliente)!=-1) realizarVenta(idcliente);
                         else Console.WriteLine("No se encontró el cliente");
                         ; break;
                     case 2:

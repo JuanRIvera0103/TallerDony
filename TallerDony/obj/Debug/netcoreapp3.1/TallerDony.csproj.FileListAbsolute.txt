@@ -11,3 +11,16 @@ C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\Taller
 C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.dll
 C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.pdb
 C:\Users\higui\source\repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.genruntimeconfig.cache
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.exe
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.deps.json
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.runtimeconfig.json
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.runtimeconfig.dev.json
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.dll
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\bin\Debug\netcoreapp3.1\TallerDony.pdb
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.csprojAssemblyReference.cache
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.AssemblyInfoInputs.cache
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.AssemblyInfo.cs
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.csproj.CoreCompileInputs.cache
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.dll
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.pdb
+C:\Users\RYZEN 3\Source\Repos\TallerDony\TallerDony\obj\Debug\netcoreapp3.1\TallerDony.genruntimeconfig.cache
