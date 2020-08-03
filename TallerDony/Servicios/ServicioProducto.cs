@@ -8,9 +8,9 @@ using TallerDony.Servicios;
 namespace TallerDony.Servicios
 {
     class ServicioProducto
-    {        
-        int opcion, cantidad, codigo, precio;
-        string nombre;
+    {
+        int opcion, cantidad, precio;
+        string nombre, codigo;
         public void menuProductos()
         {
             bool salir = false;
@@ -30,11 +30,13 @@ namespace TallerDony.Servicios
                 {
                     case 1:
                         bool codigovalido;
-                        do {                            
+                        do
+                        {
                             Console.WriteLine("Dijite el codigo: ");
-                            codigo = int.Parse(Console.ReadLine());
+                            string codigo = Console.ReadLine();
                             if (verificarCodigo(codigo)) codigovalido = true;
-                            else {
+                            else
+                            {
                                 codigovalido = false;
                                 Console.WriteLine("El codigo ingresado ya existe");
                             }
@@ -53,31 +55,32 @@ namespace TallerDony.Servicios
                         ; break;
                     case 2:
                         Console.WriteLine("Ingrese el codigo del producto que desea buscar: ");
-                        codigo = int.Parse(Console.ReadLine());
+                        codigo = Console.ReadLine();
                         buscarProducto(codigo);
-                        ;break;
+                        ; break;
                     case 3:
                         Console.WriteLine("Ingrese el codigo del producto que desea modificar: ");
-                        codigo = int.Parse(Console.ReadLine());
+                        codigo = Console.ReadLine();
                         modificarProducto(codigo);
                         ; break;
                     case 4:
                         Console.WriteLine("Ingrese el codigo del producto que desea eliminar: ");
-                        codigo = int.Parse(Console.ReadLine());
+                        codigo = Console.ReadLine();
                         eliminarProducto(codigo);
-                        ; break;                  
+                        ; break;
                     case 5:
                         salir = true;
                         ; break;
-                    default: Console.WriteLine("Opción ingresada no es valida");
-                        ;break;
-                }                
+                    default:
+                        Console.WriteLine("Opción ingresada no es valida");
+                        ; break;
+                }
             } while (salir != true);
             Console.Clear();
         }
 
         static List<Producto> listaProductos = new List<Producto>();
-
+        static List<Producto> listaProductos10 = new List<Producto>();
         private void agregarProducto(Producto producto)
         {
             listaProductos.Add(producto);
@@ -92,23 +95,22 @@ namespace TallerDony.Servicios
             swp.Close();
         }
 
-        public int buscarProducto(int codigo)
+        public int buscarProducto(string codigo)
         {
             int respuesta = -1;
             foreach (Producto producto in listaProductos)
             {
-                if (producto.codigo == codigo)
+                if (producto.codigo.Equals(codigo))
                 {
                     Console.WriteLine("Codigo: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
                     respuesta = listaProductos.IndexOf(producto);
                 }
-                else Console.WriteLine("No se encontró el producto");                
             }
             return respuesta;
         }
 
 
-        private void modificarProducto(int codigo)
+        private void modificarProducto(string codigo)
         {
             int posicion = -1;
             posicion = buscarProducto(codigo);
@@ -125,14 +127,14 @@ namespace TallerDony.Servicios
                     do
                     {
                         Console.WriteLine("Dijite el codigo: ");
-                        codigo = int.Parse(Console.ReadLine());
+                        codigo = Console.ReadLine();
                         if (verificarCodigo(codigo)) codigovalido = true;
                         else
                         {
                             codigovalido = false;
                             Console.WriteLine("El codigo ingresado ya existe");
                         }
-                    } while (codigovalido == false);                    
+                    } while (codigovalido == false);
                     Console.WriteLine("Dijite el nombre: ");
                     nombre = Console.ReadLine();
                     Console.WriteLine("Dijite el precio: ");
@@ -147,21 +149,21 @@ namespace TallerDony.Servicios
             }
         }
 
-        private void eliminarProducto(int codigo)
+        private void eliminarProducto(string codigo)
         {
             int posicion = -1;
             posicion = buscarProducto(codigo);
-            if(posicion != -1)
+            if (posicion != -1)
             {
                 int respuesta = 0;
                 Console.WriteLine("¿Estas seguro que deseas eliminar el producto? ( 1.Si / 2.No )");
                 respuesta = int.Parse(Console.ReadLine());
 
                 if (respuesta == 1) listaProductos.RemoveAt(posicion); ;
-            }                        
+            }
         }
 
-        public int cantidadProducto(int codigo)
+        public int cantidadProducto(string codigo)
         {
             int cantidad = 0;
             foreach (Producto producto in listaProductos)
@@ -171,7 +173,7 @@ namespace TallerDony.Servicios
             return cantidad;
         }
 
-        public int precioProducto(int codigo)
+        public int precioProducto(string codigo)
         {
             int precio = 0;
             foreach (Producto producto in listaProductos)
@@ -181,28 +183,28 @@ namespace TallerDony.Servicios
             return precio;
         }
 
-        public void reducirCantidad(int posicion, int codigo, int cantidadvendida)
-        {            
+        public void reducirCantidad(int posicion, string codigo, int cantidadvendida)
+        {
 
             foreach (Producto productos in listaProductos)
             {
-                if(productos.codigo == codigo)
+                if (productos.codigo == codigo)
                 {
                     codigo = productos.codigo;
                     nombre = productos.nombre;
                     precio = productos.precio;
                     cantidad = productos.cantidad - cantidadvendida;
-                }                
+                }
             }
-            
+
             listaProductos.RemoveAt(posicion);
 
             Producto producto = new Producto(codigo, nombre, precio, cantidad);
 
-             listaProductos.Insert(posicion, producto);
-         }                 
+            listaProductos.Insert(posicion, producto);
+        }
 
-        private bool verificarCodigo(int codigo)
+        private bool verificarCodigo(string codigo)
         {
             bool valido = true;
             foreach (Producto producto in listaProductos)
@@ -212,7 +214,40 @@ namespace TallerDony.Servicios
 
             return valido;
         }
+        public void ValidadProducto10()
+        {
+            foreach (Producto producto10 in listaProductos10)
+            {
+                foreach (Producto producto in listaProductos)
+                {
 
+                    if (producto10.codigo.Equals(producto.codigo))
+                    {
+                        StreamReader sr = new StreamReader(@"productos.txt");
+                        var infoanterior = sr.ReadLine();
+                        sr.Close();
+                        StreamWriter sw = new StreamWriter(@"productos.txt");
+                        sw.Write(infoanterior + " Cedula " + producto.codigo + " Nombre " + producto.nombre + " Telefono " + producto.precio + " Direccion " + producto.cantidad, Environment.NewLine);
 
+                        sw.Close();
+                    }
+
+                }
+            }
+        }
+        public void Agregarproducto10(Producto producto, string id)
+        {
+            if (buscarProducto(id) == -1)
+            {
+                listaProductos.Add(producto);
+                listaProductos10.Add(producto);
+            }
+            else
+            {
+                Console.WriteLine("Ya se encuentra registrado");
+            }
+        }
     }
+
+
 }

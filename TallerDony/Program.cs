@@ -44,6 +44,11 @@ namespace TallerDony
                         ServicioReporte servicioreporte = new ServicioReporte();
                         servicioreporte.menuReportes();
                         ; break;
+                    case 5:
+                        ServicioConfig config = new ServicioConfig();
+                        config.Leer10Clientes();
+                        config.Leer10Productos();
+                        ; break;
                     case 6:
                         salir = true;
                         ;break;

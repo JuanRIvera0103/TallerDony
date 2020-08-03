@@ -8,13 +8,13 @@ namespace TallerDony.Clases
     class Factura
     {
         public int idfactura { get; set; }
-        public int idcliente { get; set; }
+        public string idcliente { get; set; }
         public string fecha { get; set; }
         public int cantidadproductos { get; set; }
         public int total { get; set; }
         public int estado { get; set; }
 
-        public Factura(int idfactura, int idcliente, string fecha, int cantidadproductos, int total, int estado)
+        public Factura(int idfactura, string idcliente, string fecha, int cantidadproductos, int total, int estado)
         {
             this.idfactura = idfactura;
             this.idcliente = idcliente;

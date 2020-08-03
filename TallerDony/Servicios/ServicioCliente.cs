@@ -10,50 +10,53 @@ namespace TallerDony.Servicios
     class ServicioCliente
     {
         static List<Cliente> ListaCliente = new List<Cliente>();
-        
-        public void AgregarCliente(Cliente cliente)
-        { 
-            ListaCliente.Add(cliente);
-            StreamReader sr = new StreamReader(@"cliente.txt");
-            var infoanterior = sr.ReadLine();
-            sr.Close();
-            StreamWriter sw = new StreamWriter(@"cliente.txt");
-            sw.WriteLine(infoanterior+"Cedula " +cliente.IdCliente+" Nombre "+cliente.NombreCliente+" Telefono "+cliente.telefonoCliente+" Direccion "+cliente.direccionCliente);            
-            sw.Close();
+        static List<Cliente> ListaCliente10 = new List<Cliente>();
+
+        public void AgregarCliente(Cliente cliente, string id)
+        {
+            if (BuscarCliente(id) == -1)
+            {
+                ListaCliente.Add(cliente);
+                StreamReader sr = new StreamReader(@"cliente.txt");
+                var infoanterior = sr.ReadLine();
+                sr.Close();
+                StreamWriter sw = new StreamWriter(@"cliente.txt");
+                sw.Write(infoanterior + " Cedula " + cliente.IdCliente + " Nombre " + cliente.NombreCliente + " Telefono " + cliente.telefonoCliente + " Direccion " + cliente.direccionCliente, Environment.NewLine);
+                sw.Write(infoanterior + " ");
+                sw.Close();
+            }
+            else
+            {
+                Console.WriteLine("Ya se encuentra registrado");
+            }
         }
-        public int MostrarCliente(int id)
+        public void MostrarCliente(string id)
         {
             BuscarCliente(id);
 
-            int respuesta = 0;
-            foreach(Cliente cliente in ListaCliente )
+            foreach (Cliente cliente in ListaCliente)
             {
-                if (cliente.IdCliente == id)
-                {
-                    Console.WriteLine("ID: " + cliente.IdCliente + " El nombre es: " + cliente.NombreCliente + " La dirección es: " + cliente.direccionCliente + " El telefono: " + cliente.telefonoCliente);
-                    respuesta = 1;
-                }
+                if (cliente.IdCliente.Equals(id)) Console.WriteLine("ID: " + cliente.IdCliente + " El nombre es: " + cliente.NombreCliente + " La dirección es: " + cliente.direccionCliente + " El telefono: " + cliente.telefonoCliente);
+            }
+        }
+
+        public int BuscarCliente(string id)
+        {
+            int respuesta = -1;
+            foreach (Cliente cliente in ListaCliente)
+            {
+                if (cliente.IdCliente.Equals(id)) respuesta = ListaCliente.IndexOf(cliente);
             }
             return respuesta;
         }
-        
-        public int BuscarCliente(int id)
-        {
-            int respuesta=-1;
-            foreach (Cliente cliente in ListaCliente)
-            {
-              if(cliente.IdCliente == id) respuesta = ListaCliente.IndexOf(cliente); 
-            }
-            return respuesta;
-        }        
 
-        public void ModificarCliente(int id, Cliente cliente)
+        public void ModificarCliente(string id, Cliente cliente)
         {
-           int pos = BuscarCliente(id);
+            int pos = BuscarCliente(id);
             ListaCliente.RemoveAt(pos);
             ListaCliente.Insert(pos, cliente);
         }
-        public void EliminarCliente(int id)
+        public void EliminarCliente(string id)
         {
             int pos = BuscarCliente(id);
             ListaCliente.RemoveAt(pos);
@@ -78,7 +81,7 @@ namespace TallerDony.Servicios
                 {
                     case 1:
                         Console.WriteLine("Ingresa cedula");
-                        int CedulaCliente = int.Parse(Console.ReadLine());
+                        string CedulaCliente = Console.ReadLine();
                         Console.WriteLine("Ingresa nombre");
                         string NombreCliente = Console.ReadLine();
                         Console.WriteLine("Ingresa Dirección");
@@ -86,19 +89,19 @@ namespace TallerDony.Servicios
                         Console.WriteLine("Ingresa Telefono");
                         string telefonoCliente = Console.ReadLine();
                         Cliente cliente = new Cliente(CedulaCliente, NombreCliente, direccionCliente, telefonoCliente);
-                        AgregarCliente(cliente);
+                        AgregarCliente(cliente, CedulaCliente);
                         break;
 
                     case 2:
                         Console.WriteLine("Ingrese id");
-                        int id = int.Parse(Console.ReadLine());
+                        string id = Console.ReadLine();
                         if (BuscarCliente(id) >= 0) MostrarCliente(id);
                         else Console.WriteLine("Cliente no encontrado");
 
                         break;
                     case 3:
                         Console.WriteLine("Ingresa el id");
-                        id = int.Parse(Console.ReadLine());
+                        id = Console.ReadLine();
                         if (BuscarCliente(id) >= 0)
                         {
                             Console.WriteLine("Ingresa nombre");
@@ -114,7 +117,7 @@ namespace TallerDony.Servicios
                         break;
                     case 4:
                         Console.WriteLine("Ingresa el id");
-                        id = int.Parse(Console.ReadLine());
+                        id = Console.ReadLine();
                         if (BuscarCliente(id) >= 0) EliminarCliente(id);
                         else Console.WriteLine("Cliente no encontrado");
                         break;
@@ -129,5 +132,50 @@ namespace TallerDony.Servicios
 
         }
 
+        public int ObtenerTamaño()
+        {
+            return ListaCliente.Count;
+        }
+        public void RecorrerLista()
+        {
+            foreach (Cliente cliente in ListaCliente)
+            {
+                Console.WriteLine("ID: " + cliente.IdCliente + " El nombre es: " + cliente.NombreCliente + " La dirección es: " + cliente.direccionCliente + " El telefono: " + cliente.telefonoCliente);
+            }
+        }
+
+        public void Validad10()
+        {
+            foreach (Cliente cliente10 in ListaCliente10)
+            {
+                foreach (Cliente cliente in ListaCliente)
+                {
+
+                    if (cliente10.IdCliente.Equals(cliente.IdCliente))
+                    {
+                        StreamReader sr = new StreamReader(@"cliente.txt");
+                        var infoanterior = sr.ReadLine();
+                        sr.Close();
+                        StreamWriter sw = new StreamWriter(@"cliente.txt");
+                        sw.Write(infoanterior + " Cedula " + cliente.IdCliente + " Nombre " + cliente.NombreCliente + " Telefono " + cliente.telefonoCliente + " Direccion " + cliente.direccionCliente, Environment.NewLine);
+
+                        sw.Close();
+                    }
+
+                }
+            }
+        }
+        public void AgregarCliente10(Cliente cliente, string id)
+        {
+            if (BuscarCliente(id) == -1)
+            {
+                ListaCliente.Add(cliente);
+                ListaCliente10.Add(cliente);
+            }
+            else
+            {
+                Console.WriteLine("Ya se encuentra registrado");
+            }
+        }
     }
 }

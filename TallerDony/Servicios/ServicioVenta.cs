@@ -9,10 +9,10 @@ namespace TallerDony.Servicios
 {
     class ServicioVenta
     {
-        int idcliente, idfactura, cantidadproductos, opcion, total = 0, estado = 1;
+        int idfactura, cantidadproductos, opcion, total = 0, estado = 1;
         static DateTime dt = DateTime.Today;
         bool valido;
-        string fecha;
+        string fecha, idcliente;
         static List<Factura> listaFactura = new List<Factura>();
 
 
@@ -34,11 +34,11 @@ namespace TallerDony.Servicios
                 {
                     case 1:
                         Console.Write("Ingrese la cedula del cliente: ");
-                        idcliente = int.Parse(Console.ReadLine());
+                        idcliente = Console.ReadLine();
 
                         ServicioCliente serviciocliente = new ServicioCliente();
 
-                        if (serviciocliente.MostrarCliente(idcliente) == 1) realizarVenta(idcliente);
+                        if (serviciocliente.BuscarCliente(idcliente).Equals(1)) realizarVenta(idcliente);
                         else Console.WriteLine("No se encontró el cliente");
                         ; break;
                     case 2:
@@ -86,11 +86,11 @@ namespace TallerDony.Servicios
             var infoanterior = srp.ReadLine();
             srp.Close();
             StreamWriter swp = new StreamWriter(@"facturas.txt");
-            swp.WriteLine("Codigo:" + factura.idfactura + " idcliente:" + factura.idcliente + " fecha:" + factura.fecha + " Cantidad productos:" + factura.cantidadproductos + " Total:" + factura.total + " Estado:" + factura.estado);
+            swp.WriteLine(infoanterior+" Codigo:" + factura.idfactura + " idcliente:" + factura.idcliente + " fecha:" + factura.fecha + " Cantidad productos:" + factura.cantidadproductos + " Total:" + factura.total + " Estado:" + factura.estado);
             swp.Close();
         }
 
-        private void realizarVenta(int idcliente)
+        private void realizarVenta(string idcliente)
         {
             fecha = String.Format("{0:d}", dt); ;
             string respuesta = "";            
@@ -100,7 +100,7 @@ namespace TallerDony.Servicios
                 ServicioProducto servicioproducto = new ServicioProducto();
                 Producto producto = new Producto();
                 Console.WriteLine("Ingrese el codigo del producto que desea llevar: ");
-                int codigoproducto = int.Parse(Console.ReadLine());
+                string codigoproducto = Console.ReadLine();
                 int posicion = servicioproducto.buscarProducto(codigoproducto);
                 
                 if (posicion > -1)
