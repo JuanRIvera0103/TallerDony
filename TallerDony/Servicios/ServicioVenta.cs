@@ -99,7 +99,7 @@ namespace TallerDony.Servicios
             {
                 ServicioProducto servicioproducto = new ServicioProducto();
                 Producto producto = new Producto();
-                Console.WriteLine("Ingrese el codigo del producto que desea llevar: ");
+                Console.WriteLine("Ingrese el código del producto que desea llevar: ");
                 string codigoproducto = Console.ReadLine();
                 int posicion = servicioproducto.buscarProducto(codigoproducto);
                 
@@ -146,7 +146,7 @@ namespace TallerDony.Servicios
 
                 agregarFactura(factura);
             }
-            else Console.WriteLine("La venta se cancelo porque no hay ningún producto");
+            else Console.WriteLine("La venta se canceló porque no hay ningún producto");
             cantidadproductos = 0;
         }
         

@@ -10,6 +10,7 @@ namespace TallerDony.Servicios
 {
     class ServicioConfig
     {
+        List<Config> Empresa = new List<Config>();
         public void Leer10Clientes()
         {
             StreamReader sr = new StreamReader(@"Cliente10.txt");
@@ -58,7 +59,47 @@ namespace TallerDony.Servicios
             }
             sr.Close();
             servicioProducto.ValidadProducto10();
-            
+
         }
+        public void AgregarNombreEmpresa(Config nombreEmpresa)
+        {
+            Empresa.Clear();
+            Empresa.Add(nombreEmpresa);
+        }
+        public string LlamarNombreEmpresa() {
+            string nombre = "";
+            foreach (Config config in Empresa)
+            { 
+                
+                nombre = config.Nombre_empresa;
+            }
+            return nombre;
+        }
+        
+
+        public void MenuConfig()
+        {
+            Console.WriteLine("------------------------ Menu Clientes ------------------------");
+            Console.WriteLine("1.Agregar 10 Clientes y 10 productos");
+            Console.WriteLine("2.Agregar un nombre de la empresa");
+
+            int opt = int.Parse(Console.ReadLine());
+            switch (opt)
+            {
+                case 1:
+                    Leer10Clientes();
+                    Leer10Productos();
+                    break;
+
+                case 2:
+                    Console.WriteLine("Digite nombre de la empresa");
+                    string nombre = Console.ReadLine();
+                    Config config = new Config(nombre);
+                    AgregarNombreEmpresa(config);
+
+                    break;
+            }
+        }
+
     }
 }

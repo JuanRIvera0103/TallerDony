@@ -32,20 +32,20 @@ namespace TallerDony.Servicios
                         bool codigovalido;
                         do
                         {
-                            Console.WriteLine("Dijite el codigo: ");
-                            string codigo = Console.ReadLine();
+                            Console.WriteLine("Digite el código: ");
+                             codigo = Console.ReadLine();
                             if (verificarCodigo(codigo)) codigovalido = true;
                             else
                             {
                                 codigovalido = false;
-                                Console.WriteLine("El codigo ingresado ya existe");
+                                Console.WriteLine("El código ingresado ya existe");
                             }
                         } while (codigovalido == false);
-                        Console.WriteLine("Dijite el nombre: ");
+                        Console.WriteLine("Digite el nombre: ");
                         nombre = Console.ReadLine();
-                        Console.WriteLine("Dijite el precio: ");
+                        Console.WriteLine("Digite el precio: ");
                         precio = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Dijite la cantidad: ");
+                        Console.WriteLine("Digite la cantidad: ");
                         cantidad = int.Parse(Console.ReadLine());
 
                         Producto producto = new Producto(codigo, nombre, precio, cantidad);
@@ -54,17 +54,17 @@ namespace TallerDony.Servicios
 
                         ; break;
                     case 2:
-                        Console.WriteLine("Ingrese el codigo del producto que desea buscar: ");
+                        Console.WriteLine("Ingrese el código del producto que desea buscar: ");
                         codigo = Console.ReadLine();
                         buscarProducto(codigo);
                         ; break;
                     case 3:
-                        Console.WriteLine("Ingrese el codigo del producto que desea modificar: ");
+                        Console.WriteLine("Ingrese el código del producto que desea modificar: ");
                         codigo = Console.ReadLine();
                         modificarProducto(codigo);
                         ; break;
                     case 4:
-                        Console.WriteLine("Ingrese el codigo del producto que desea eliminar: ");
+                        Console.WriteLine("Ingrese el código del producto que desea eliminar: ");
                         codigo = Console.ReadLine();
                         eliminarProducto(codigo);
                         ; break;
@@ -91,7 +91,7 @@ namespace TallerDony.Servicios
             srp.Close();
             StreamWriter swp = new StreamWriter(@"productos.txt");
 
-            swp.WriteLine(infoanterior + " Codigo: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
+            swp.WriteLine(infoanterior + " Código: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
             swp.Close();
         }
 
@@ -102,7 +102,7 @@ namespace TallerDony.Servicios
             {
                 if (producto.codigo.Equals(codigo))
                 {
-                    Console.WriteLine("Codigo: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
+                    Console.WriteLine("Código: " + producto.codigo + " Nombre: " + producto.nombre + " Precio: " + producto.precio + " Cantidad: " + producto.cantidad);
                     respuesta = listaProductos.IndexOf(producto);
                 }
             }
@@ -132,7 +132,7 @@ namespace TallerDony.Servicios
                         else
                         {
                             codigovalido = false;
-                            Console.WriteLine("El codigo ingresado ya existe");
+                            Console.WriteLine("El código ingresado ya existe");
                         }
                     } while (codigovalido == false);
                     Console.WriteLine("Dijite el nombre: ");
@@ -227,7 +227,7 @@ namespace TallerDony.Servicios
                         var infoanterior = sr.ReadLine();
                         sr.Close();
                         StreamWriter sw = new StreamWriter(@"productos.txt");
-                        sw.Write(infoanterior + " Codigo " + producto.codigo + " Nombre " + producto.nombre + " Precio " + producto.precio + " Cantidad " + producto.cantidad, Environment.NewLine);
+                        sw.Write(infoanterior + " Código " + producto.codigo + " Nombre " + producto.nombre + " Precio " + producto.precio + " Cantidad " + producto.cantidad, Environment.NewLine);
 
                         sw.Close();
                     }

@@ -19,7 +19,7 @@ namespace TallerDony.Servicios
                 Console.WriteLine("3.Reporte de Facturas");           
                 Console.WriteLine("4.Salir");
                 Console.WriteLine("----------------------------------------------------------------");
-                Console.WriteLine("Ingrese le numero según la opción que desea solicitar: ");
+                Console.WriteLine("Ingrese el numero según la opción que desea solicitar: ");
                 opcion = int.Parse(Console.ReadLine());
 
                 switch (opcion)

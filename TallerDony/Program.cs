@@ -12,18 +12,19 @@ namespace TallerDony
         {
             bool salir = false;
             int opcion = 0;
-            Console.WriteLine("Bienvenido a la empresa TC#");
+            ServicioConfig config1 = new ServicioConfig();
+            Console.WriteLine("Bienvenido a la empresa");
             do
             {
-                Console.WriteLine("------------------------ Menu de TC# ------------------------");
+                Console.WriteLine("------------------------ Menu de "+config1.LlamarNombreEmpresa()+" ------------------------");
                 Console.WriteLine("1.Menu Clientes");
                 Console.WriteLine("2.Menu Productos");
                 Console.WriteLine("3.Menu Ventas");
                 Console.WriteLine("4.Menu Informes");
-                Console.WriteLine("5.Generar 10 clientes y 10 productos");
+                Console.WriteLine("5.Menu configuración");
                 Console.WriteLine("6.Salir");
                 Console.WriteLine("-------------------------------------------------------------");
-                Console.WriteLine("Ingrese le numero según la opción que desea solicitar: ");
+                Console.WriteLine("Ingrese el numero según la opción que desea solicitar: ");
                 opcion = int.Parse(Console.ReadLine());
                 Console.Clear();
                 switch (opcion)
@@ -45,9 +46,8 @@ namespace TallerDony
                         servicioreporte.menuReportes();
                         ; break;
                     case 5:
-                        ServicioConfig config = new ServicioConfig();
-                        config.Leer10Clientes();
-                        config.Leer10Productos();
+                        config1.MenuConfig();
+                        
                         ; break;
                     case 6:
                         salir = true;
