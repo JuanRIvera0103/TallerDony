@@ -14,8 +14,8 @@ namespace TallerDony.Servicios
 
         public void AgregarCliente(Cliente cliente, string id)
         {
-            if (BuscarCliente(id) == -1)
-            {
+            
+            
                 ListaCliente.Add(cliente);
                 StreamReader sr = new StreamReader(@"cliente.txt");
                 var infoanterior = sr.ReadLine();
@@ -24,11 +24,10 @@ namespace TallerDony.Servicios
                 sw.Write(infoanterior + " Cedula " + cliente.IdCliente + " Nombre " + cliente.NombreCliente + " Telefono " + cliente.telefonoCliente + " Direccion " + cliente.direccionCliente, Environment.NewLine);
                 sw.Write(infoanterior + " ");
                 sw.Close();
-            }
-            else
-            {
+            
+            
                 Console.WriteLine("Ya se encuentra registrado");
-            }
+            
         }
         public void MostrarCliente(string id)
         {
@@ -80,43 +79,48 @@ namespace TallerDony.Servicios
                 switch (opt)
                 {
                     case 1:
+                        
                         Console.WriteLine("Ingresa cedula");
                         string CedulaCliente = Console.ReadLine();
-                        Console.WriteLine("Ingresa nombre");
-                        string NombreCliente = Console.ReadLine();
-                        Console.WriteLine("Ingresa Dirección");
-                        string direccionCliente = Console.ReadLine();
-                        Console.WriteLine("Ingresa Telefono");
-                        string telefonoCliente = Console.ReadLine();
-                        Cliente cliente = new Cliente(CedulaCliente, NombreCliente, direccionCliente, telefonoCliente);
-                        AgregarCliente(cliente, CedulaCliente);
+                        if (BuscarCliente(CedulaCliente) == -1)
+                        {
+                            Console.WriteLine("Ingresa nombre");
+                            string NombreCliente = Console.ReadLine();
+                            Console.WriteLine("Ingresa Dirección");
+                            string direccionCliente = Console.ReadLine();
+                            Console.WriteLine("Ingresa Telefono");
+                            string telefonoCliente = Console.ReadLine();
+                            Cliente cliente = new Cliente(CedulaCliente, NombreCliente, direccionCliente, telefonoCliente);
+                            AgregarCliente(cliente, CedulaCliente);
+                        }
+                        else Console.WriteLine("Ya se encuentra registrado este cliente");
                         break;
 
                     case 2:
-                        Console.WriteLine("Ingrese id");
+                        Console.WriteLine("Ingrese la cedula");
                         string id = Console.ReadLine();
                         if (BuscarCliente(id) >= 0) MostrarCliente(id);
                         else Console.WriteLine("Cliente no encontrado");
 
                         break;
                     case 3:
-                        Console.WriteLine("Ingresa el id");
+                        Console.WriteLine("Ingresa la cedula");
                         id = Console.ReadLine();
                         if (BuscarCliente(id) >= 0)
                         {
                             Console.WriteLine("Ingresa nombre");
-                            NombreCliente = Console.ReadLine();
+                            string NombreCliente = Console.ReadLine();
                             Console.WriteLine("Ingresa Dirección");
-                            direccionCliente = Console.ReadLine();
+                           string  direccionCliente = Console.ReadLine();
                             Console.WriteLine("Ingresa Telefono");
-                            telefonoCliente = Console.ReadLine();
+                           string  telefonoCliente = Console.ReadLine();
                             Cliente cliente1 = new Cliente(id, NombreCliente, direccionCliente, telefonoCliente);
                             ModificarCliente(id, cliente1);
                         }
                         else Console.WriteLine("Cliente no encontrado");
                         break;
                     case 4:
-                        Console.WriteLine("Ingresa el id");
+                        Console.WriteLine("Ingresa la cedula");
                         id = Console.ReadLine();
                         if (BuscarCliente(id) >= 0) EliminarCliente(id);
                         else Console.WriteLine("Cliente no encontrado");

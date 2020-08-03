@@ -79,26 +79,38 @@ namespace TallerDony.Servicios
 
         public void MenuConfig()
         {
-            Console.WriteLine("------------------------ Menu Clientes ------------------------");
-            Console.WriteLine("1.Agregar 10 Clientes y 10 productos");
-            Console.WriteLine("2.Agregar un nombre de la empresa");
-
-            int opt = int.Parse(Console.ReadLine());
-            switch (opt)
+            bool salir = false;
+            do
             {
-                case 1:
-                    Leer10Clientes();
-                    Leer10Productos();
-                    break;
+                Console.WriteLine("------------------------ Menu Clientes ------------------------");
+                Console.WriteLine("1.Agregar 10 Clientes y 10 productos");
+                Console.WriteLine("2.Agregar un nombre de la empresa");
+                Console.WriteLine("3.Salir");
 
-                case 2:
-                    Console.WriteLine("Digite nombre de la empresa");
-                    string nombre = Console.ReadLine();
-                    Config config = new Config(nombre);
-                    AgregarNombreEmpresa(config);
+                int opt = int.Parse(Console.ReadLine());
+                switch (opt)
+                {
+                    case 1:
+                        Leer10Clientes();
+                        Leer10Productos();
+                        break;
 
-                    break;
-            }
+                    case 2:
+                        Console.WriteLine("Digite nombre de la empresa");
+                        string nombre = Console.ReadLine();
+                        Config config = new Config(nombre);
+                        AgregarNombreEmpresa(config);
+
+                        break;
+                    case 3:
+                        salir = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opción ingresada no es valida");
+                        ; break;
+                }
+            } while (salir != true);
+            Console.Clear();
         }
 
     }
