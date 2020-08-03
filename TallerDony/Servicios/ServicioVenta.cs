@@ -92,6 +92,7 @@ namespace TallerDony.Servicios
 
         private void realizarVenta(string idcliente)
         {
+            int cantidad = 0, cantidadproductoseleccionado=0, precioproducto=0, subtotal=0;
             fecha = String.Format("{0:d}", dt); ;
             string respuesta = "";            
             idfactura = obtenerIdfactura();
@@ -105,11 +106,15 @@ namespace TallerDony.Servicios
                 
                 if (posicion > -1)
                 {
-                    Console.Write("Ingrese la cantidad que desea llevar : ");
-                    int cantidad = int.Parse(Console.ReadLine());
-                    int cantidadproductoseleccionado = servicioproducto.cantidadProducto(codigoproducto);
-                    int precioproducto = servicioproducto.precioProducto(codigoproducto);
-                    int subtotal = cantidad * precioproducto;
+                    try
+                    {
+                        Console.Write("Ingrese la cantidad que desea llevar : ");
+                         cantidad = int.Parse(Console.ReadLine());
+                         cantidadproductoseleccionado = servicioproducto.cantidadProducto(codigoproducto);
+                         precioproducto = servicioproducto.precioProducto(codigoproducto);
+                         subtotal = cantidad * precioproducto;
+                    }
+                    catch (Exception) { cantidad = 0; }
 
                     if ((cantidad > 0) && (cantidad <= cantidadproductoseleccionado))
                     {

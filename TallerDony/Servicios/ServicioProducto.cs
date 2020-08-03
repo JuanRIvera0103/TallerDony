@@ -33,7 +33,7 @@ namespace TallerDony.Servicios
                         do
                         {
                             Console.WriteLine("Digite el código: ");
-                             codigo = Console.ReadLine();
+                            codigo = Console.ReadLine();
                             if (verificarCodigo(codigo)) codigovalido = true;
                             else
                             {
@@ -41,17 +41,36 @@ namespace TallerDony.Servicios
                                 Console.WriteLine("El código ingresado ya existe");
                             }
                         } while (codigovalido == false);
+
                         Console.WriteLine("Digite el nombre: ");
                         nombre = Console.ReadLine();
-                        Console.WriteLine("Digite el precio: ");
-                        precio = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Digite la cantidad: ");
-                        cantidad = int.Parse(Console.ReadLine());
-
+                        try
+                        {
+                            Console.WriteLine("Digite el precio: ");
+                            precio = int.Parse(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("No se agregó el precio");
+                            precio = 0;
+                        }
+                        try
+                        {
+                            Console.WriteLine("Digite la cantidad: ");
+                            cantidad = int.Parse(Console.ReadLine());
+                            
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("No se agregó la cantidad");
+                            cantidad = 0;
+                        }
+                        if (precio > 0 || cantidad > 0) { 
                         Producto producto = new Producto(codigo, nombre, precio, cantidad);
 
                         agregarProducto(producto);
-
+                        }
+                         else Console.WriteLine("No se agregó el producto");
                         ; break;
                     case 2:
                         Console.WriteLine("Ingrese el código del producto que desea buscar: ");
