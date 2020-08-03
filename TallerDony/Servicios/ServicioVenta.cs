@@ -42,7 +42,7 @@ namespace TallerDony.Servicios
                         else Console.WriteLine("No se encontró el cliente");
                         ; break;
                     case 2:
-                        Console.Write("Ingrese el codigo del producto que desea buscar: ");
+                        Console.Write("Ingrese el codigo de la factura que desea buscar: ");
                         idfactura = int.Parse(Console.ReadLine());
 
                         if(buscarFactura(idfactura) > -1)
@@ -105,7 +105,7 @@ namespace TallerDony.Servicios
                 
                 if (posicion > -1)
                 {
-                    Console.Write("Ingrese la cantidad que desea llevar; ");
+                    Console.Write("Ingrese la cantidad que desea llevar : ");
                     int cantidad = int.Parse(Console.ReadLine());
                     int cantidadproductoseleccionado = servicioproducto.cantidadProducto(codigoproducto);
                     int precioproducto = servicioproducto.precioProducto(codigoproducto);
@@ -113,7 +113,7 @@ namespace TallerDony.Servicios
 
                     if ((cantidad > 0) && (cantidad <= cantidadproductoseleccionado))
                     {
-                        cantidadproductos++;
+                        cantidadproductos=cantidadproductos+cantidad;
                         Detalle detalle = new Detalle(idfactura, codigoproducto, cantidad, subtotal);
 
                         ServicioDetalle serviciodetalle = new ServicioDetalle();
@@ -146,8 +146,10 @@ namespace TallerDony.Servicios
 
                 agregarFactura(factura);
             }
-            else Console.WriteLine("La venta se cancelo porque no hay ningún producto");        
+            else Console.WriteLine("La venta se cancelo porque no hay ningún producto");
+            cantidadproductos = 0;
         }
+        
 
         private int buscarFactura(int idfactura)
         {

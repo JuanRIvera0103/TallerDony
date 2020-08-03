@@ -227,7 +227,7 @@ namespace TallerDony.Servicios
                         var infoanterior = sr.ReadLine();
                         sr.Close();
                         StreamWriter sw = new StreamWriter(@"productos.txt");
-                        sw.Write(infoanterior + " Cedula " + producto.codigo + " Nombre " + producto.nombre + " Telefono " + producto.precio + " Direccion " + producto.cantidad, Environment.NewLine);
+                        sw.Write(infoanterior + " Codigo " + producto.codigo + " Nombre " + producto.nombre + " Precio " + producto.precio + " Cantidad " + producto.cantidad, Environment.NewLine);
 
                         sw.Close();
                     }

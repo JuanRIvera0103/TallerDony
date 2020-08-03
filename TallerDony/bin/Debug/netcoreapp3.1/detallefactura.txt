@@ -1,1 +1,1 @@
- Idfactura: 1 Idproducto: 1 Cantidad: 1Subtotal: 12000 Idfactura: 1 Idproducto: 1 Cantidad: 1Subtotal: 12000 Idfactura: 2 Idproducto: 8 Cantidad: 9Subtotal: 2700
+
