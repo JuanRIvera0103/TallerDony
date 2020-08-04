@@ -26,7 +26,7 @@ namespace TallerDony.Servicios
                 sw.Close();
             
             
-                Console.WriteLine("Ya se encuentra registrado");
+                Console.WriteLine("Se registró con exito");
             
         }
         public void MostrarCliente(string id)
