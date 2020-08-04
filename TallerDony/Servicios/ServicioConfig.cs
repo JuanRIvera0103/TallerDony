@@ -82,10 +82,12 @@ namespace TallerDony.Servicios
             bool salir = false;
             do
             {
-                Console.WriteLine("------------------------ Menu Clientes ------------------------");
+                Console.WriteLine("------------------------ Menu Configuración ------------------------");
                 Console.WriteLine("1.Agregar 10 Clientes y 10 productos");
                 Console.WriteLine("2.Agregar un nombre de la empresa");
                 Console.WriteLine("3.Salir");
+                Console.WriteLine("---------------------------------------------------------------------");
+                Console.WriteLine("Ingrese el numero según la opción que desea solicitar: ");
 
                 int opt = int.Parse(Console.ReadLine());
                 switch (opt)

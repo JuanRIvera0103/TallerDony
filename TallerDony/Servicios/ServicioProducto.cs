@@ -145,7 +145,7 @@ namespace TallerDony.Servicios
                     Console.WriteLine("Ingrese los datos para actualizar");
                     do
                     {
-                        Console.WriteLine("Dijite el codigo: ");
+                        Console.WriteLine("Digite el codigo: ");
                         codigo = Console.ReadLine();
                         if (verificarCodigo(codigo)) codigovalido = true;
                         else
@@ -154,11 +154,11 @@ namespace TallerDony.Servicios
                             Console.WriteLine("El código ingresado ya existe");
                         }
                     } while (codigovalido == false);
-                    Console.WriteLine("Dijite el nombre: ");
+                    Console.WriteLine("Digite el nombre: ");
                     nombre = Console.ReadLine();
-                    Console.WriteLine("Dijite el precio: ");
+                    Console.WriteLine("Digite el precio: ");
                     precio = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Dijite la cantidad: ");
+                    Console.WriteLine("Digite la cantidad: ");
                     cantidad = int.Parse(Console.ReadLine());
 
                     Producto producto = new Producto(codigo, nombre, precio, cantidad);
