@@ -137,7 +137,15 @@ namespace TallerDony.Servicios
             {
                 int respuesta = 0;
                 Console.WriteLine("¿Estas seguro que deseas modificar el producto? ( 1.Si / 2.No )");
-                respuesta = int.Parse(Console.ReadLine());
+                try
+                {
+                    respuesta = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    respuesta = 0;
+                    Console.WriteLine("Escriba 1 para Sí o 2 para No");
+                }
                 if (respuesta == 1)
                 {
                     listaProductos.RemoveAt(posicion);
@@ -176,9 +184,16 @@ namespace TallerDony.Servicios
             {
                 int respuesta = 0;
                 Console.WriteLine("¿Estas seguro que deseas eliminar el producto? ( 1.Si / 2.No )");
-                respuesta = int.Parse(Console.ReadLine());
-
-                if (respuesta == 1) listaProductos.RemoveAt(posicion); ;
+                try
+                {
+                    respuesta = int.Parse(Console.ReadLine());
+                }
+                catch(Exception)
+                {
+                    respuesta = 0;
+                    Console.WriteLine("Escriba 1 para Sí o 2 para No");
+                }
+                if (respuesta == 1) listaProductos.RemoveAt(posicion); 
             }
         }
 
